@@ -6,7 +6,8 @@ require_once("header.php");
 ?>
 <body>
 <div class="row my-3"> partie filtrage, recherche et categorie, jeanne</div>
-
+<div class="col-3"  style="width : 200px;"></div>
+<div class="col-6">
 <div class="row p-3 my-5 mx-5 text-center col-10 border">
 
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
@@ -70,11 +71,11 @@ require_once("header.php");
 ?>
         <div class="card container mb-3 " >
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-4 px-0">
                     <img src='<?= $image ?>' style="height: 250px; width: 250px;" class="img-fluid rounded-start" alt="...">
                 </div>
                 <div class="col-md-8">
-                    <div class="card-body">
+                    <div class="card-body px-0">
                         <h5 class="card-title"><?= $annonce['titre']?></h5>
                         <p class="card-text"><small class="text-muted"><?= $sousTitre?></small></p>
                         <p class="card-text"><?= $annonce['prix'] ?></p>
@@ -87,6 +88,8 @@ require_once("header.php");
 
     <?php } ?>
 </div>
+</div>
+<div class="col-3 text-center"></div>
 
 
 
