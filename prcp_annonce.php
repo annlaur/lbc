@@ -6,11 +6,11 @@ require_once("header.php");
 ?>
 <body>
 <div class="row my-3"> partie filtrage, recherche et categorie, jeanne</div>
-<div class="col-3"  style="width : 200px;"></div>
-<div class="col-6">
-<div class="row p-3 my-5 mx-5 text-center col-10 border">
 
-    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+
+<div class="row p-3 my-5 mx-5 text-center border" style="width: 1000px;">
+
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" >
     <div class="carousel-inner">
  <!-- dans le carousel on affiche les 9 annonces les plus vu  -->
         <div class="carousel-item active"> <!-- SLIDE 1 -->
@@ -59,7 +59,7 @@ require_once("header.php");
 </div>
 
 
-<div class="">
+
 <?php
     $allAnnonces = getAllAnnonces($pdo);
     foreach($allAnnonces as $annonce){
@@ -69,7 +69,7 @@ require_once("header.php");
         $description = substr($annonce['lib_a'], 0, 100);
         
 ?>
-        <div class="card container mb-3 " >
+        <div class="card container mb-3" style="width: 1100px;" >
             <div class="row">
                 <div class="col-md-4 px-0">
                     <img src='<?= $image ?>' style="height: 250px; width: 250px;" class="img-fluid rounded-start" alt="...">
@@ -78,18 +78,29 @@ require_once("header.php");
                     <div class="card-body px-0">
                         <h5 class="card-title"><?= $annonce['titre']?></h5>
                         <p class="card-text"><small class="text-muted"><?= $sousTitre?></small></p>
-                        <p class="card-text"><?= $annonce['prix'] ?></p>
+                        <p class="card-text text-success"><strong><?= $annonce['prix'] ?> €</strong></p>
                         <p class="card-text"><?= $description ?> ....</p>
                         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                     </div>
                 </div>
             </div>
+            <span class="position-absolute top-0 start-100 translate-middle p-2">
+                <img src="img_site/star-bold.svg" alt="star">
+                <!-- 
+                    fonction mettre en favoris
+                 -->
+            </span>
         </div>
 
     <?php } ?>
+
+
+
+<div class="sticky-bottom  float-end">
+    <a href="creer_annonce.php" target="_blank" rel="noopener noreferrer">
+        <img src="img_site/plus-circle.svg" alt="PLUS">
+    </a>
 </div>
-</div>
-<div class="col-3 text-center"></div>
 
 
 
