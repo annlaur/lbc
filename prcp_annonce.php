@@ -2,13 +2,12 @@
 require("session.php");
 require("fonction.php");
 require("test.php");
+require_once("header.php");
 ?>
 <body>
-<div class="row my-3"> header, jeanne</div>
-<div class="row my-3"> nav, jeanne<</div>
 <div class="row my-3"> partie filtrage, recherche et categorie, jeanne</div>
 
-<div class="row p-5 my-5 border">
+<div class="row p-3 my-5 mx-5 text-center col-10 border">
 
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
