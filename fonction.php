@@ -79,7 +79,7 @@ function getUneImage(PDO $pdo, int $ida, int $img){
 
 function getFavoris(PDO $pdo, int $id){
     $vosFavoris = array();
-    $query = "select annonce.ida, user.nom as auteur, annonce.titre
+    $query = "select annonce.ida, user.nom as auteur, annonce.titre, annonce.img
     FROM favoris , annonce , user 
     WHERE favoris.ida = annonce.ida and user.idu = annonce.idu and favoris.idu = :idu";
 

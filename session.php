@@ -4,6 +4,7 @@
     $pdo->exec("SET NAMES utf8");
     session_start();
     if(isset($_SESSION["nom"])){
+    
     $mail=$_SESSION["mail"];
     $nom=$_SESSION["nom"];
     $idu=$_SESSION["idu"];

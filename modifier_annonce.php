@@ -13,12 +13,14 @@
 
 ?>
 <body>
+    <div class="container">
     <form action="" method="post">
         <input type="text" name="titre"  class="form-control" value="<?=$titre?>">
         <input type="text" name="description"  class="form-control" value="<?=$description?>">
         <input type="number" name="prix"  class="form-control" value="<?=$prix?>">
         <input type="submit" name="boutton" value="Modifier">
     </form>
+    </div>
 
 </body>
 <?php
