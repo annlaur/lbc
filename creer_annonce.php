@@ -1,73 +1,97 @@
-<?php 
+<?php
 require_once("session.php");
-require("test.php");
+require_once("header.php");
+// $idu= 1;
+
+//$id = mysqli_connect("127.0.0.1","root","","lbc");
+//mysqli_query($id, "SET NAMES utf8");
+
+
+if(isset($_POST['submit']))
+{
+	extract($_POST);
+
+$req="insert into annonce values (null, :photo, :titre, :descrip , :zipcode, :ville, now(), null, null,:prix, :idu, :idc)";
+$statement = $pdo->prepare($req);
+$statement->bindValue(':photo',$photo, PDO::PARAM_STR);
+$statement->bindValue(':titre',$titre, PDO::PARAM_STR);
+$statement->bindValue(':descrip',$descrip, PDO::PARAM_STR);
+$statement->bindValue(':zipcode',$zipcode, PDO::PARAM_STR);
+$statement->bindValue(':ville',$ville, PDO::PARAM_STR);
+$statement->bindValue(':prix', $prix, PDO::PARAM_INT);
+$statement->bindValue(':idu',$idu, PDO::PARAM_INT);
+$statement->bindValue(':idc',$idc, PDO::PARAM_INT);
+
+    $statement->execute();
+    // récupérer le dernier ida pour ensuite mettre des images
+    // $ida = $pdo->lastInsertId();
+    // echo "Votre annonce a bien été créer";
+}
 ?>
-<body style="background-color: rgb(17, 92, 255);">
-
-    <div class=" col-md-8 m-5">
-        <div class="bg-light m-5 p-md-5 shadow rounded">
-            <form action="" method="post">
-                <h1 class="text-center fw-bold m-1" style="color: rgb(17, 92, 255);">Déposer une annonce</h1>
-                    <!-- <input class="form-control my-3 w-50 " type="file" name="photo" placeholder="telecharger une image" required> -->
-                    <input class="form-control my-3 w-50 " type="text" name="titre" placeholder="Titre de l'annonce" required>
-                    <input class="form-control my-3 w-50 " type="number" name="prix" placeholder="Prix (€)" required min="0">
-                    <select name="categorie"> 
-                        <option value="1">cat 1</option>
-                        <option value="2">cat 2</option>
-                        <option value="3">cat 3</option>
-                        <option value="4">cat 4</option>
-                    </select>
-                    <textarea class="form-control form-control-sm " name="descri" placeholder="Description de l'annonce"  cols="100" rows="10"></textarea>
-
-                    <div class="text-center my-5">
-                        <input class="btn btn-primary" type="submit" name="submit" value="Poster l'annonce">
-                    </div>
-            </form>
-        </div>
-    </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Déposer une annonce</title>
+	
+</head>
+<body>
+    <form action="" method="post">
+        Titre:<input type="text" name="titre" placeholder="Titre de l'annonce" required>
+		Prix:<input type="text" name="prix" placeholder="Prix" min=0 required>€
+        Code Postal:<input type="text" name="zipcode" placeholder="Code Postal" size="6" maxlength="5" required>
+        Régions:<select placeholder="Choisir la region" name="region" required>
+                	<?php
+                    	$req2 = "SELECT DISTINCT nomRegion FROM region"; 
+                    	//$resultat2= mysqli_query($id,$req2);
+						foreach($pdo->query($req2,PDO::FETCH_ASSOC) as $ligne)
+                   		//while($ligne=mysqli_fetch_assoc($resultat2))
+                    	{
+                        	echo "<option value='".$ligne["nomRegion"]."'> ".$ligne["nomRegion"]." </option>";
+                    	}
+                	?>
+        		</select><br><br>
         
-
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
-</body>
-</html>
+        Ville:<input type="text" name="ville" placeholder="Ville" required>
+		Catégorie: <select placeholder="Categorie" name="idc" required>
+                	<?php
+                    	$req3 = "SELECT DISTINCT nom_cat FROM categorie"; 
+                    	// $resultat3= mysqli_query($id,$req3);
+						foreach($pdo->query($req3,PDO::FETCH_ASSOC)as $ligne)
+                   		// while($ligne=mysqli_fetch_assoc($resultat3))
+                    	{
+                        	echo "<option value='".$ligne["idc"]."'> ".$ligne["nom_cat"]." </option>";
+                    	}
+                	?>
+        Description:<textarea name="descrip" placeholder="Description de l'annonce" cols="30" rows="10" required></textarea>
+        Voulez-vous télécharger des images:<input type="radio" name="question" value="1" required><input type="radio" name="question" value="0" required>
+		Télécharger des images:<input class="" type="text" name="photo" value="https://fakeimg.pl/300/">
+		<input type="submit" name="submit" value="Créer l'annonce" required>	
+    </form>
 
 <?php
-if(isset($_POST["submit"]))
+$req4 = "select * from annonce order by date desc";
+$annonce = $pdo->query($req4);
+
+while ($a = $annonce->fetch())
 {
- echo "TEST!!!!!!";
-    // if(!isset($_POST['photo'])) throw new Exception("Le paramètre email est absent");
-    if(!isset($_POST['titre'])) throw new Exception("Le paramètre titre est absent");
-    $titre = $_POST['titre'];
-    if(!isset($_POST['prix'])) throw new Exception("Le paramètre prix est absent");
-    $prix = $_POST['prix'];
-    if(!isset($_POST['categorie'])) throw new Exception("Le paramètre categorie est absent");
-    $idc = $_POST['categorie'];
-    if(!isset($_POST['descri'])) throw new Exception("Le paramètre description est absent");
-    $lib_a = $_POST['descri'];
-
-
-
-
-
-    $req="insert into annonce values (null, :idc, :idu, :titre , :lib_a, :prix, :d , null, null)";
-    $statement = $pdo->prepare($req);
-    $statement->bindValue(':idu',$idu, PDO::PARAM_INT);
-    $statement->bindValue(':idc',$idc, PDO::PARAM_INT);
-    $statement->bindValue(':titre',$titre, PDO::PARAM_STR);
-    $statement->bindValue(':lib_a',$lib_a, PDO::PARAM_STR);
-    $statement->bindValue(':prix', $prix);
-    $statement->bindValue(':d', date("Y-m-d H:i:s"));
-
-        $statement->execute();
-        // récupérer le dernier ida pour ensuite mettre des images
-        $ida = $pdo->lastInsertId();
-        echo "Votre annonce a bien été créer";
-        header("refresh: 2; url=creer_annonce.php");
-
-
-   
+	?>
+		<li><a href="detail_annonce.php?ida=<?=$a['ida']?>"><?= $a['titre']?></a></li>
+	<?php
 }
 
 
+// $var = getAnnonce($pdo, $ida);
+
+// echo"Salut les kheys";
+// var_dump($_POST);
+// require_once("session.php")
+// $pdo = new PDO('mysql:host=localhost;dbname=lbc', 'root', '');
+
+
 ?>
+
+</body>
+</html>
