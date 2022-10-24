@@ -14,21 +14,22 @@ if(isset($_POST['submit']))
 {
 	extract($_POST);
 
-$req="insert into annonce values (null, :photo, :titre, :descrip , :zipcode, :ville, now(), null, null,:prix, :idu, :idc)";
+$req="insert into annonce values (null, :idu, :idc, :titre, :lib_a, now(), null, null,:prix, 0)";
 $statement = $pdo->prepare($req);
-$statement->bindValue(':photo',$photo, PDO::PARAM_STR);
-$statement->bindValue(':titre',$titre, PDO::PARAM_STR);
-$statement->bindValue(':descrip',$descrip, PDO::PARAM_STR);
-$statement->bindValue(':zipcode',$zipcode, PDO::PARAM_STR);
-$statement->bindValue(':ville',$ville, PDO::PARAM_STR);
-$statement->bindValue(':prix', $prix, PDO::PARAM_INT);
 $statement->bindValue(':idu',$idu, PDO::PARAM_INT);
 $statement->bindValue(':idc',$idc, PDO::PARAM_INT);
+$statement->bindValue(':titre',$titre, PDO::PARAM_STR);
+$statement->bindValue(':lib_a',$lib_a, PDO::PARAM_STR);
+$statement->bindValue(':prix', $prix);
+
 
     $statement->execute();
     // récupérer le dernier ida pour ensuite mettre des images
-    // $ida = $pdo->lastInsertId();
+    $ida = $pdo->lastInsertId();
     // echo "Votre annonce a bien été créer";
+
+	// header("location:detail_annonce.php?ida='$ida'");
+	
 }
 
 // $region = getRegion($pdo, $annonce['idu']);
@@ -47,8 +48,8 @@ $statement->bindValue(':idc',$idc, PDO::PARAM_INT);
     <form action="" method="post">
         Titre:<input type="text" name="titre" placeholder="Titre de l'annonce" required>
 		Prix:<input type="text" name="prix" placeholder="Prix" min=0 required>€
-        Code Postal:<input type="text" name="zipcode" placeholder="Code Postal" size="6" maxlength="5" required>
-        Régions:<select placeholder="Choisir la region" name="region" required>
+        Code Postal:<input type="text" name="cp" placeholder="Code Postal" size="6" maxlength="5" required>
+        Régions:<select placeholder="Choisir la region" name="region">
                 	<?php
                     	$req2 = "SELECT DISTINCT nomRegion FROM region"; 
                     	//$resultat2= mysqli_query($id,$req2);
@@ -72,7 +73,7 @@ $statement->bindValue(':idc',$idc, PDO::PARAM_INT);
                     	}
                 	?>
         Description:<textarea name="descrip" placeholder="Description de l'annonce" cols="30" rows="10" required></textarea>
-        Voulez-vous télécharger des images:<input type="radio" name="question" value="1" required><input type="radio" name="question" value="0" required>
+        <!-- Voulez-vous télécharger des images:<input type="radio" name="question" value="1" required><input type="radio" name="question" value="0" required> -->
 		Télécharger des images:<input class="" type="text" name="photo" value="https://fakeimg.pl/300/">
 		<input type="submit" name="submit" value="Créer l'annonce" required>	
     </form>
