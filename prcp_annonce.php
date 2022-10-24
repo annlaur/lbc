@@ -101,7 +101,7 @@ require_once("header.php");
 
 <div class="sticky-bottom  float-end">
     <a href="creer_annonce.php" target="_blank" rel="noopener noreferrer">
-        <img src="img_site/plus-circle.svg" alt="PLUS">
+        <img src="img_site/plus-circle.svg" alt="PLUS"> <p>CREER UNE ANNONCE</p>
     </a>
 </div>
 

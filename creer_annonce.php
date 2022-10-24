@@ -1,6 +1,9 @@
 <?php
-require_once("session.php");
+require("session.php");
+require("fonction.php");
 require_once("header.php");
+require_once("test.php");
+
 // $idu= 1;
 
 //$id = mysqli_connect("127.0.0.1","root","","lbc");
@@ -27,6 +30,9 @@ $statement->bindValue(':idc',$idc, PDO::PARAM_INT);
     // $ida = $pdo->lastInsertId();
     // echo "Votre annonce a bien été créer";
 }
+
+// $region = getRegion($pdo, $annonce['idu']);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -71,7 +77,7 @@ $statement->bindValue(':idc',$idc, PDO::PARAM_INT);
 		<input type="submit" name="submit" value="Créer l'annonce" required>	
     </form>
 
-<?php
+<!-- <?php
 $req4 = "select * from annonce order by date desc";
 $annonce = $pdo->query($req4);
 
@@ -81,17 +87,7 @@ while ($a = $annonce->fetch())
 		<li><a href="detail_annonce.php?ida=<?=$a['ida']?>"><?= $a['titre']?></a></li>
 	<?php
 }
-
-
-// $var = getAnnonce($pdo, $ida);
-
-// echo"Salut les kheys";
-// var_dump($_POST);
-// require_once("session.php")
-// $pdo = new PDO('mysql:host=localhost;dbname=lbc', 'root', '');
-
-
-?>
+?> -->
 
 </body>
 </html>
