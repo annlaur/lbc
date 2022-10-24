@@ -4,31 +4,27 @@ require("fonction.php");
 require_once("header.php");
 require_once("test.php");
 
-// $idu= 1;
-
-//$id = mysqli_connect("127.0.0.1","root","","lbc");
-//mysqli_query($id, "SET NAMES utf8");
 
 
 if(isset($_POST['submit']))
 {
 	extract($_POST);
+	
 
-$req="insert into annonce values (null, :idu, :idc, :titre, :lib_a, now(), null, null,:prix, 0)";
+$req="insert into annonce values (null, :idc, :idu, :titre, :lib_a, :prix, now(), 0, null, null)";
 $statement = $pdo->prepare($req);
 $statement->bindValue(':idu',$idu, PDO::PARAM_INT);
 $statement->bindValue(':idc',$idc, PDO::PARAM_INT);
 $statement->bindValue(':titre',$titre, PDO::PARAM_STR);
-$statement->bindValue(':lib_a',$lib_a, PDO::PARAM_STR);
+$statement->bindValue(':lib_a',$descrip, PDO::PARAM_STR);
 $statement->bindValue(':prix', $prix);
 
 
     $statement->execute();
     // récupérer le dernier ida pour ensuite mettre des images
-    $ida = $pdo->lastInsertId();
+    $ida = $pdo->lastInsertId('ida');
     // echo "Votre annonce a bien été créer";
-
-	// header("location:detail_annonce.php?ida='$ida'");
+	header("location:detail_annonce.php");
 	
 }
 
@@ -46,23 +42,29 @@ $statement->bindValue(':prix', $prix);
 </head>
 <body>
     <form action="" method="post">
-        Titre:<input type="text" name="titre" placeholder="Titre de l'annonce" required>
-		Prix:<input type="text" name="prix" placeholder="Prix" min=0 required>€
-        Code Postal:<input type="text" name="cp" placeholder="Code Postal" size="6" maxlength="5" required>
-        Régions:<select placeholder="Choisir la region" name="region">
+        Titre:
+		<input type="text" name="titre" placeholder="Titre de l'annonce" required><br>
+		Prix:
+		<input type="text" name="prix" placeholder="Prix" min=0 required>€<br>
+        Code Postal:
+		<input type="text" name="cp" placeholder="Code Postal" size="6" maxlength="5" required><br>
+        Régions:
+		<select placeholder="Choisir la region" name="region">
                 	<?php
                     	$req2 = "SELECT DISTINCT nomRegion FROM region"; 
-                    	//$resultat2= mysqli_query($id,$req2);
+                    	
 						foreach($pdo->query($req2,PDO::FETCH_ASSOC) as $ligne)
-                   		//while($ligne=mysqli_fetch_assoc($resultat2))
+                   		
                     	{
                         	echo "<option value='".$ligne["nomRegion"]."'> ".$ligne["nomRegion"]." </option>";
                     	}
                 	?>
         		</select><br><br>
         
-        Ville:<input type="text" name="ville" placeholder="Ville" required>
-		Catégorie: <select placeholder="Categorie" name="idc" required>
+        Ville:
+		<input type="text" name="ville" placeholder="Ville" required>
+		Catégorie: 
+		<select placeholder="Categorie" name="idc" required>
                 	<?php
                     	$req3 = "SELECT DISTINCT nom_cat FROM categorie"; 
                     	// $resultat3= mysqli_query($id,$req3);
@@ -71,8 +73,9 @@ $statement->bindValue(':prix', $prix);
                     	{
                         	echo "<option value='".$ligne["idc"]."'> ".$ligne["nom_cat"]." </option>";
                     	}
-                	?>
-        Description:<textarea name="descrip" placeholder="Description de l'annonce" cols="30" rows="10" required></textarea>
+                	?><br>
+        Description:
+		<textarea name="descrip" placeholder="Description de l'annonce" cols="30" rows="10" required></textarea><br>
         <!-- Voulez-vous télécharger des images:<input type="radio" name="question" value="1" required><input type="radio" name="question" value="0" required> -->
 		Télécharger des images:<input class="" type="text" name="photo" value="https://fakeimg.pl/300/">
 		<input type="submit" name="submit" value="Créer l'annonce" required>	
