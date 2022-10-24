@@ -38,7 +38,7 @@ $user = getUser($pdo, $annonce['idu']);
     <h4><?= $user["cp"]?></h4><br>
     <p><?= $annonce["lib_a"]?></p>
 
-    <a href="messagerie.php">CONTACTER le vendeur</a>
+    <a href="messagerie.php">CONTACTER LE VENDEUR</a>
 
 
 </body>
