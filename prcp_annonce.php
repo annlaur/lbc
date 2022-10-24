@@ -5,7 +5,7 @@ require("test.php");
 require_once("header.php");
 ?>
 <body>
-<div class="row my-3"> partie filtrage, recherche et categorie, jeanne</div>
+<div class="row my-3"> partie filtrage, recherche et categorie, Jeanne/Louis</div>
 
 
 <div class="row p-3 my-5 mx-5 text-center border" style="width: 1000px;">
@@ -63,6 +63,7 @@ require_once("header.php");
 <?php
     $allAnnonces = getAllAnnonces($pdo);
     foreach($allAnnonces as $annonce){
+        $ida = $annonce['ida'];
         $image = getUneImage($pdo, $annonce['ida'],$annonce['img']);
         $sousTitre = $annonce['nom'].' '.$annonce['ville'].' '.$annonce['cp'];
         //substr pour n'afficher que les 100 premiers caractères de la description dans les petites cartes
@@ -81,6 +82,8 @@ require_once("header.php");
                         <p class="card-text text-success"><strong><?= $annonce['prix'] ?> €</strong></p>
                         <p class="card-text"><?= $description ?> ....</p>
                         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                        <p class="card-text"><a href="detail_annonce.php?ida=<?=$ida?>">détail</a>
+                        </p>
                     </div>
                 </div>
             </div>
