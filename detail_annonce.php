@@ -9,20 +9,16 @@ if(isset($_GET['ida']) && !empty($_GET['ida']))
     $ida = (int) $_GET['ida'];
     var_dump($ida);
     $annonce = getUneAnnonce($pdo, $ida);
-    // $annonce= $statement->fetch();
-    // $request = $statement;
-    // var_dump($annonce);
 
-    var_dump($annonce);
 
 }else{
     header('location : prcp_annonce.php');
 
 }
 
-// $region = getRegion($pdo, $annonce['idu']);
-// $image = getUneImage($pdo, $annonce['ida'],$annonce['img']);
-// $user = getUser($pdo, $annonce['idu']);
+$region = getRegion($pdo, $annonce['idu']);
+$image = getUneImage($pdo, $annonce['ida'],$annonce['img']);
+$user = getUser($pdo, $annonce['idu']);
 
 ?>
 

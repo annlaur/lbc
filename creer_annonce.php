@@ -1,36 +1,12 @@
 <?php
-require("session.php");
-require("fonction.php");
-require_once("header.php");
-require_once("test.php");
-
-
-
-if(isset($_POST['submit']))
-{
-	extract($_POST);
-	
-
-$req="insert into annonce values (null, :idc, :idu, :titre, :lib_a, :prix, now(), 0, null, null)";
-$statement = $pdo->prepare($req);
-$statement->bindValue(':idu',$idu, PDO::PARAM_INT);
-$statement->bindValue(':idc',$idc, PDO::PARAM_INT);
-$statement->bindValue(':titre',$titre, PDO::PARAM_STR);
-$statement->bindValue(':lib_a',$descrip, PDO::PARAM_STR);
-$statement->bindValue(':prix', $prix);
-
-
-    $statement->execute();
-    // récupérer le dernier ida pour ensuite mettre des images
-    $ida = $pdo->lastInsertId('ida');
-    // echo "Votre annonce a bien été créer";
-	header("location:detail_annonce.php");
-	
-}
-
-// $region = getRegion($pdo, $annonce['idu']);
+	require("session.php");
+	require("fonction.php");
+	require_once("header.php");
+	require_once("test.php");
 
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -71,7 +47,7 @@ $statement->bindValue(':prix', $prix);
 						foreach($pdo->query($req3,PDO::FETCH_ASSOC)as $ligne)
                    		// while($ligne=mysqli_fetch_assoc($resultat3))
                     	{
-                        	echo "<option value='".$ligne["idc"]."'> ".$ligne["nom_cat"]." </option>";
+                        	echo "<option value =".$ligne['idc']."> ".$ligne["nom_cat"]." </option>";
                     	}
                 	?><br>
         Description:
@@ -81,17 +57,35 @@ $statement->bindValue(':prix', $prix);
 		<input type="submit" name="submit" value="Créer l'annonce" required>	
     </form>
 
-<!-- <?php
-$req4 = "select * from annonce order by date desc";
-$annonce = $pdo->query($req4);
 
-while ($a = $annonce->fetch())
-{
-	?>
-		<li><a href="detail_annonce.php?ida=<?=$a['ida']?>"><?= $a['titre']?></a></li>
-	<?php
-}
-?> -->
 
 </body>
 </html>
+
+<?php
+if(isset($_POST['submit']))
+	{
+		extract($_POST);
+		
+
+		$req="insert into annonce values (null, :idc, :idu, :titre, :lib_a, :prix, now(), 0, null, null)";
+		$statement = $pdo->prepare($req);
+		$statement->bindValue(':idu',$idu, PDO::PARAM_INT);
+		$statement->bindValue(':idc',$idc, PDO::PARAM_INT);
+		$statement->bindValue(':titre',$titre, PDO::PARAM_STR);
+		$statement->bindValue(':lib_a',$descrip, PDO::PARAM_STR);
+		$statement->bindValue(':prix', $prix);
+
+
+		$statement->execute();
+		// récupérer le dernier ida pour ensuite mettre des images
+		$ida = $pdo->lastInsertId('ida');
+		
+		echo "Votre annonce a été créée<br>
+		<a href='prcp_annonce.php'>redirection sur page principal</a><br>";
+		echo "ou <a href='detail_annonce.php?ida=$ida'>Voir mon annonce</a>";
+		//header("location:detail_annonce.php");
+			
+	}
+
+?>

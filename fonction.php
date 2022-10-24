@@ -127,7 +127,7 @@ function countImg(PDO $pdo, int $ida){
 
 function getRegion(PDO $pdo, int $idu)
 {
-    $request2 = ("SELECT region.nomRegion FROM user, region WHERE user.idu = '$idu' AND region.idr = user.idr");
+    $request2 = ("select region.nomRegion from user, region where user.idu = '$idu' and region.idr = user.idr");
 
     foreach($pdo->query($request2, PDO::FETCH_ASSOC) as $u){
                 $region = $u['nomRegion'];
