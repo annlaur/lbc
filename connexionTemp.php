@@ -1,6 +1,7 @@
 <?php
 require("test.php");
     $pdo = new PDO('mysql:host=localhost;dbname=lbc', 'root', '');
+    //$pdo = new PDO('mysql:host=localhost:3307;dbname=lbc', 'root', '');
 ?>
 <!DOCTYPE html>
 <html lang="en">
