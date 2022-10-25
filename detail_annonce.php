@@ -16,9 +16,11 @@ if(isset($_GET['ida']) && !empty($_GET['ida']))
 
 }
 
-$region = getRegion($pdo, $annonce['idu']);//
+$region = getRegion($pdo, $annonce['idu']);
 $image = getUneImage($pdo, $annonce['ida'],$annonce['img']);
 $user = getUser($pdo, $annonce['idu']);
+$destinataire=$annonce['idu'];
+
 
 ?>
 
@@ -39,7 +41,7 @@ $user = getUser($pdo, $annonce['idu']);
     <h4><?= $user["cp"]?></h4><br>
     <p><?= $annonce["lib_a"]?></p>
 
-    <a href="messagerie.php">CONTACTER LE VENDEUR</a>
+    <a href="messagerie.php?ida=<?=$destinataire?>">CONTACTER LE VENDEUR</a>
 
 
 </body>
