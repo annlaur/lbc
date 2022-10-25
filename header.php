@@ -18,10 +18,10 @@
                     <h1 class="logo"><img src="img_logo/vame5.png" alt=""></h1>
                 </div>
                 <div class="m-right">
-                    <a href="#"class="m-link"><i class="fa fa-plus-square" aria-hidden="true"></i> Déposer une annonce</a>
-                    <a href="#"class="m-link"><i class="fa fa-comments" aria-hidden="true"></i> Messages</a>
-                    <a href="#"class="m-link"><i class="fa fa-heart" aria-hidden="true"></i> Mes favoris </a>
-                    <a href="#"class="m-link"><i class="fa fa-user-o" aria-hidden="true"></i> Se connecter</a>
+                <a href="creer_annonce.php"class="m-link"><i class="fa fa-plus-square" aria-hidden="true"></i> Déposer une annonce</a>
+                    <a href="messagerie.php"class="m-link"><i class="fa fa-comments" aria-hidden="true"></i> Messages</a>
+                    <a href="profil.php"class="m-link"><i class="fa fa-heart" aria-hidden="true"></i> Mes favoris </a>
+                    <a href="connexionTemp.php"class="m-link"><i class="fa fa-user-o" aria-hidden="true"></i> Se connecter</a>
                 </div>    
             </div>
         </nav>

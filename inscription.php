@@ -7,6 +7,7 @@ require_once("test.php");
 if(isset($_POST['valid']))
 {
     extract($_POST);
+    $mdp = password_hash($_POST['mdp'], PASSWORD_DEFAULT);
 
     $pdo->query("INSERT into user VALUES (null, '$idr','$mail','$mdp','$prenom','$ville','$cp')", PDO::FETCH_ASSOC) ;
     $statement = $pdo->prepare($req);

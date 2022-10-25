@@ -1,7 +1,7 @@
 <?php
 require("test.php");
     //$pdo = new PDO('mysql:host=localhost;dbname=lbc', 'root', '');
-    $pdo = new PDO('mysql:host=localhost:3307;dbname=lbc', 'root', '');
+    $pdo = new PDO('mysql:host=localhost;dbname=lbc', 'root', '');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,7 +26,7 @@ require("test.php");
             </div>
             <input type="submit" name="bout"value="se connecter" class="btn btn-primary mb-3 rounded-3">
             <br>
-            <a href="mdp.php">Mot de passe oublié ?</a>
+            <a href="mdp.php">Mot de passe oubliÃ© ?</a>
         </div>
         
     </form>
@@ -36,8 +36,10 @@ require("test.php");
             //verifier si tout est bon
             $mail=$_POST["mail"];
             $mdp=$_POST["mdp"];
-            foreach ($pdo->query("select * from user where mail='$mail' and mdp='$mdp'", PDO::FETCH_ASSOC) as $li)
+            foreach ($pdo->query("select * from user where mail='$mail' ", PDO::FETCH_ASSOC) as $li)
             if(count($li)>0){
+                $passwordHash = $li['mdp'];
+                if(password_verify($mdp, $passwordHash)){
                 //creer variable de session
                 session_start();
                 $_SESSION["mail"]=$li["mail"];
@@ -48,6 +50,7 @@ require("test.php");
             }else{
                 echo "erreur mot de passe ou mail";
             }
+        }
         }
             
             
