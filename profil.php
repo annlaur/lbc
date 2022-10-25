@@ -48,6 +48,37 @@ $pdo->exec("SET NAMES utf8");
 
         <div class="col">
             <h2>Messagerie</h2>
+            <?php
+            
+            $recupMessages= $pdo->prepare("SELECT * FROM message WHERE id_auteur='$idu' OR id_destinataire = '$idu' order by date");// Je veux pouvoir consulter mes messages avec un autre utilisateur
+            $recupMessages->execute();
+    while($message = $recupMessages->fetch()){
+        $auteur=getUser($pdo,$message['id_auteur']);
+        $nom_auteur=$auteur['nom'];
+        
+        if($message['id_destinataire'] == $idu){
+            ?>
+
+            <p style="color:red;"><?=$message['message'];echo " ".$message['date'];echo " ".$nom_auteur;?></p>
+            <?php
+        }else if (($message['id_auteur'] == $idu)){
+            ?>
+            <p style="color:green;"><?=$message['message'];echo " ".$message['date'];echo " ".$nom; ?></p>
+            <?php
+    
+        }
+    }
+
+
+
+    ?>
+                    
+         
+
+
+
+
+            
         </div>
 
         <div class="col">
