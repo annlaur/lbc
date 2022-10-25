@@ -64,6 +64,7 @@ require_once("header.php");
     $allAnnonces = getAllAnnonces($pdo);
     foreach($allAnnonces as $annonce){
         $ida = $annonce['ida'];
+        $fav = favoris($pdo, $ida, $idu);
         $image = getUneImage($pdo, $annonce['ida'],$annonce['img']);
         $sousTitre = $annonce['nom'].' '.$annonce['ville'].' '.$annonce['cp'];
         //substr pour n'afficher que les 100 premiers caractères de la description dans les petites cartes
@@ -87,12 +88,13 @@ require_once("header.php");
                     </div>
                 </div>
             </div>
-            <span class="position-absolute top-0 start-100 translate-middle p-2">
-                <img src="img_site/star-bold.svg" alt="star">
-                <!-- 
-                    fonction mettre en favoris
-                 -->
-            </span>
+            
+                <span class="position-absolute top-0 start-100 translate-middle p-2">
+                    <a href='favoris.php?ida=<?=$ida?>'>
+                    <img src='<?= $fav ?>' alt="star">
+                    </a>
+                </span>
+            
         </div>
 
     <?php } ?>

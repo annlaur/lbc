@@ -4,10 +4,11 @@ require("fonction.php");
 require_once("header.php");
 require_once("test.php");
 
-if(isset($_GET['ida']) && !empty($_GET['ida']))
+if(isset($_GET['destinataire']) && !empty($_GET['destinataire']))
 {
-    $destinataire=$_GET['ida'];
-    echo $destinataire;
+    $destinataire = $_GET['destinataire'];
+    $ida =  $_GET['ida'];
+    // echo $destinataire.'<br>'.$ida;
    
 
 
@@ -25,7 +26,7 @@ if(isset($_GET['ida']) && !empty($_GET['ida']))
 
         if(isset($_POST['envoyer'])){
             $message = htmlspecialchars($_POST['message']); // evite que l'utilisateur utilise du html
-            $insererMessage= $pdo->prepare("INSERT INTO message(message,id_destinataire,id_auteur,date)VALUES('$destinataire','$idu',?,NOW())");
+            $insererMessage= $pdo->prepare("insert into message(ida,message,id_destinataire,id_auteur,date)VALUES('$ida',?,'$destinataire','$idu',NOW())");
             $insererMessage->execute(array($_POST['message']));
         }
 
