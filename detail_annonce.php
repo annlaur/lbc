@@ -16,7 +16,7 @@ if(isset($_GET['ida']) && !empty($_GET['ida']))
 
 }
 
-$region = getRegion($pdo, $annonce['idu']);
+$region = getRegion($pdo, $annonce['idu']);//
 $image = getUneImage($pdo, $annonce['ida'],$annonce['img']);
 $user = getUser($pdo, $annonce['idu']);
 
