@@ -145,4 +145,21 @@ function getUser(PDO $pdo, int $idu)
     return $user;
 }
 
+function favoris(PDO $pdo, int $ida, $idu) : string {
+
+    foreach($pdo->query("select count(*) from favoris where ida='$ida' and idu='$idu'",PDO::FETCH_ASSOC) as $compte_fav){
+
+        $nbFav = $compte_fav['count(*)']; // on compte les lignes 
+
+        if($nbFav == 0){ //si le favoris n'existe pas deja on rempli l'étoile
+            
+            return 'img_site/star-bold.svg';
+
+        }else{ //si il existe deja on vide l'étoile
+            return 'img_site/star-fill.svg';
+        }
+
+
+    }
+}
 ?>

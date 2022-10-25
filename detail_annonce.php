@@ -35,13 +35,13 @@ $destinataire=$annonce['idu'];
 </head>
 <body>
     <h1><?=$annonce["titre"]?></h1><br>
-    
+
     <img src="<?= $image?>"><br>
     <h4><?= $user["ville"]?></h4><h4><?= $region ?></h4><br>
     <h4><?= $user["cp"]?></h4><br>
     <p><?= $annonce["lib_a"]?></p>
 
-    <a href="messagerie.php?ida=<?=$destinataire?>">CONTACTER LE VENDEUR</a>
+    <a href="messagerie.php?destinataire=<?=$destinataire?>&ida=<?=$ida?>">CONTACTER LE VENDEUR</a>
 
 
 </body>
