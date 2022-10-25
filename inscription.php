@@ -8,9 +8,20 @@ if(isset($_POST['valid']))
 {
     extract($_POST);
 
-    foreach ($pdo->query("insert into user VALUES (null, '$idr','$mail','$mdp','$prenom','$ville','$cp')", PDO::FETCH_ASSOC) as $li)
+    $pdo->query("INSERT into user VALUES (null, '$idr','$mail','$mdp','$prenom','$ville','$cp')", PDO::FETCH_ASSOC) ;
+    $statement = $pdo->prepare($req);
+    $statement->bindValue(':idr',$idr, PDO::PARAM_INT);
+    $statement->bindValue(':mail',$mail, PDO::PARAM_STR);
+    $statement->bindValue(':mdp',$mdp, PDO::PARAM_STR);
+    $statement->bindValue(':prenom',$prenom, PDO::PARAM_STR);
+    $statement->bindValue(':ville',$ville, PDO::PARAM_STR);
+    $statement->bindValue(':cp',$cp, PDO::PARAM_STR);
+
+
+
+    $statement->execute();
     // $req="INSERT INTO user VALUES (null,'$mail','$mdp', '$prenom', '$ville','$cp')";
-    $result=mysqli_query($id, $req);
+
     header("location:connexionTemp.php");
 }
 
@@ -39,12 +50,12 @@ if(isset($_POST['valid']))
         <input type="password" placeholder="Mot de passe" name="mdp" required><br><br>
         <select placeholder="Choisir la region" name="idr" required>
                 	<?php
-                    	$req2 = "select distinct nomRegion from region"; 
+                    	$req2 = "select * from region"; 
                     	//$resultat2= mysqli_query($id,$req2);
 						foreach($pdo->query($req2,PDO::FETCH_ASSOC) as $ligne)
                    		//while($ligne=mysqli_fetch_assoc($resultat2))
                     	{
-                        	echo "<option value='".$ligne["idr"]."'> ".$ligne["nomRegion"]." </option>";
+                        	echo "<option value=".$ligne['idr']."> ".$ligne['nomRegion']." </option>";
                     	}
                 	?>
         		</select><br><br>

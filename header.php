@@ -15,7 +15,7 @@
         <nav class="menu" role="navigation">
             <div class="inner">
                 <div class="m-left">
-                    <h1 class="logo">LEAJ</h1>
+                    <h1 class="logo"><img src="img_logo/vame5.png" alt=""></h1>
                 </div>
                 <div class="m-right">
                     <a href="#"class="m-link"><i class="fa fa-plus-square" aria-hidden="true"></i> Déposer une annonce</a>
