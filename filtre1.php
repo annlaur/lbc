@@ -1,14 +1,11 @@
 <?php
-require_once('header.php');
-require_once('session.php');
-
+require_once('header.html');
+$pdo = new PDO('mysql:host=localhost;dbname=lbc', 'root', '');
 $req = $pdo -> query(('SELECT * FROM annonce'));
-
-
 if(isset($_GET['s']) AND !empty($_GET['s']))
 {
     $recherche = htmlspecialchars($_GET['s']);
-    $req = $pdo -> query('SELECT titre FROM annonce WHERE titre LIKE"% '.$recherche.'%"');
+    $req = $pdo -> query('SELECT titre FROM annonce WHERE titre LIKE "%'.$recherche.'%" ');
 }
 
 
