@@ -2,15 +2,15 @@
 require("session.php");
 require("fonction.php");
 require("test.php");
+require_once("header.php");
 ?>
 <body>
-<div class="row my-3"> header, jeanne</div>
-<div class="row my-3"> nav, jeanne<</div>
-<div class="row my-3"> partie filtrage, recherche et categorie, jeanne</div>
+<div class="row my-3"> partie filtrage, recherche et categorie, Jeanne/Louis</div>
 
-<div class="row p-5 my-5 border">
 
-    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+<div class="row p-3 my-5 mx-5 text-center border" style="width: 1000px;">
+
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" >
     <div class="carousel-inner">
  <!-- dans le carousel on affiche les 9 annonces les plus vu  -->
         <div class="carousel-item active"> <!-- SLIDE 1 -->
@@ -59,34 +59,50 @@ require("test.php");
 </div>
 
 
-<div class="">
+
 <?php
     $allAnnonces = getAllAnnonces($pdo);
     foreach($allAnnonces as $annonce){
+        $ida = $annonce['ida'];
         $image = getUneImage($pdo, $annonce['ida'],$annonce['img']);
         $sousTitre = $annonce['nom'].' '.$annonce['ville'].' '.$annonce['cp'];
         //substr pour n'afficher que les 100 premiers caractères de la description dans les petites cartes
         $description = substr($annonce['lib_a'], 0, 100);
         
 ?>
-        <div class="card container mb-3 " >
+        <div class="card container mb-3" style="width: 1100px;" >
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-4 px-0">
                     <img src='<?= $image ?>' style="height: 250px; width: 250px;" class="img-fluid rounded-start" alt="...">
                 </div>
                 <div class="col-md-8">
-                    <div class="card-body">
+                    <div class="card-body px-0">
                         <h5 class="card-title"><?= $annonce['titre']?></h5>
                         <p class="card-text"><small class="text-muted"><?= $sousTitre?></small></p>
-                        <p class="card-text"><?= $annonce['prix'] ?></p>
+                        <p class="card-text text-success"><strong><?= $annonce['prix'] ?> €</strong></p>
                         <p class="card-text"><?= $description ?> ....</p>
                         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                        <p class="card-text"><a href="detail_annonce.php?ida=<?=$ida?>">détail</a>
+                        </p>
                     </div>
                 </div>
             </div>
+            <span class="position-absolute top-0 start-100 translate-middle p-2">
+                <img src="img_site/star-bold.svg" alt="star">
+                <!-- 
+                    fonction mettre en favoris
+                 -->
+            </span>
         </div>
 
     <?php } ?>
+
+
+
+<div class="sticky-bottom  float-end">
+    <a href="creer_annonce.php" target="_blank" rel="noopener noreferrer">
+        <img src="img_site/plus-circle.svg" alt="PLUS"> <p>CREER UNE ANNONCE</p>
+    </a>
 </div>
 
 

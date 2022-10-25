@@ -79,7 +79,7 @@ function getUneImage(PDO $pdo, int $ida, int $img){
 
 function getFavoris(PDO $pdo, int $id){
     $vosFavoris = array();
-    $query = "select annonce.ida, user.nom as auteur, annonce.titre
+    $query = "select annonce.ida, user.nom as auteur, annonce.titre, annonce.img
     FROM favoris , annonce , user 
     WHERE favoris.ida = annonce.ida and user.idu = annonce.idu and favoris.idu = :idu";
 
@@ -124,4 +124,25 @@ function countImg(PDO $pdo, int $ida){
     }
     return $cptImg;
 }
+
+function getRegion(PDO $pdo, int $idu)
+{
+    $request2 = ("select region.nomRegion from user, region where user.idu = '$idu' and region.idr = user.idr");
+
+    foreach($pdo->query($request2, PDO::FETCH_ASSOC) as $u){
+                $region = $u['nomRegion'];
+            }
+            return $region;
+}
+
+function getUser(PDO $pdo, int $idu)
+{
+    $request = ("select * from user where idu = $idu");
+    
+    foreach($pdo->query($request, PDO::FETCH_ASSOC) as $u){
+        $user = $u;
+    }
+    return $user;
+}
+
 ?>
