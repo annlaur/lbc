@@ -5,7 +5,7 @@ $req = $bdd -> query(('SELECT * FROM annonce'));
 if(isset($_GET['s']) AND !empty($_GET['s']))
 {
     $recherche = htmlspecialchars($_GET['s']);
-    $req = $bdd -> query('SELECT nom FROM annonce WHERE nom LIKE"% '.$recherche.'%"');
+    $req = $bdd -> query('SELECT titre FROM annonce WHERE titre LIKE"% '.$recherche.'%"');
 }
 
 
@@ -29,7 +29,7 @@ if(isset($_GET['s']) AND !empty($_GET['s']))
     if($req -> rowCount() > 0){
         while($use = $req->fetch()){
             ?>
-            <p><?=$use['nom']; ?></p>
+            <p><?=$use['titre']; ?></p>
             <?php 
         }
     }else{ 
