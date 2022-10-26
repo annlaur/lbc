@@ -1,7 +1,6 @@
 <?php
 require("session.php");
 require("fonction.php");
-require_once("header.php");
 require_once("test.php");
 
 if(isset($_POST['valid']))
@@ -36,21 +35,26 @@ if(isset($_POST['valid']))
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="bn.css">
+    <link rel="stylesheet" href="bboot.css">
     <title>Inscription</title>
 </head>
 <body>
-
-
-    <div class="aze"><br>
-    <h1>Je m'enregistre</h1><br><br>
+    <div class="row">
+    <div class="container text-center col-4  p-3 rounded-5">
+            <img class="text-center" src="img_logo/vame5.png">
+        </div>
+    </div>
+    <div class="row">
+    <div class="container text-center col-md-6 p-3 rounded-5"><br>
+    <div class="bg-light m-5 p-md-5 p-2 shadow rounded">
+    <h1>S'inscrire</h1><br><br>
 
     <form action="" method="post">
 
-        <input type="text" placeholder="Prénom" name="prenom" required><br><br>
-        <input type="email" placeholder="Adresse Mail" name="mail" required><br><br>
-        <input type="password" placeholder="Mot de passe" name="mdp" required><br><br>
-        <select placeholder="Choisir la region" name="idr" required>
+        <input class="form-control my-3" type="text" placeholder="Prénom" name="prenom" required><br><br>
+        <input class="form-control my-3" type="email" placeholder="Adresse Mail" name="mail" required><br><br>
+        <input class="form-control my-3" type="password" placeholder="Mot de passe" name="mdp" min=10 required><br><br>
+        <select class="form-select my-3" placeholder="Choisir la region" name="idr" required>
                 	<?php
                     	$req2 = "select * from region"; 
                     	//$resultat2= mysqli_query($id,$req2);
@@ -61,16 +65,21 @@ if(isset($_POST['valid']))
                     	}
                 	?>
         		</select><br><br>
-        <input type="text" placeholder="Ville" name="ville" required><br><br>
-        <input type="text" placeholder="Code Postal" name="cp" required><br><br>
+        <input class="form-control my-3" type="text" placeholder="Ville" name="ville" required><br><br>
+        <input class="form-control my-3" type="text" placeholder="Code Postal" name="cp" required><br><br>
         <!-- <input type="file" placeholder="Avatar" name="avatar"><br><br> -->
 
-        
-        <input type="submit" value="S'inscrire" name="valid">
-    </form><br>
-
-    <p>Vous êtes déja inscrit? </p><a href="connexionTemp.php"><p>Connectez-vous</p></a><br>
+        <div class="text-center m-5">
+        <input type="submit" value="S'INSCRIRE" name="valid" class="btn btn-dark mb-3 rounded-3">
+        </div>
+    </form>
+    <div class="text-center m-5">
+    <p>Vous êtes déja inscrit? </p><a style="color:black" href="connexionTemp.php"><p>Connectez-vous</p></a>
     </div>
+    </div>
+    </div>
+    </div>
+
 
 
     
