@@ -1,11 +1,13 @@
 <?php
-require_once('header.html');
-$pdo = new PDO('mysql:host=localhost;dbname=lbc', 'root', '');
+require_once('header.php');
+require_once('session.php');
+
 $req = $pdo -> query(('SELECT * FROM annonce'));
 if(isset($_GET['s']) AND !empty($_GET['s']))
 {
     $recherche = htmlspecialchars($_GET['s']);
     $req = $pdo -> query('SELECT titre FROM annonce WHERE titre LIKE "%'.$recherche.'%" ');
+
 }
 
 
@@ -17,6 +19,7 @@ if(isset($_GET['s']) AND !empty($_GET['s']))
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bboot.css">
     <title>Document</title>
 </head>
 <body>
@@ -29,7 +32,7 @@ if(isset($_GET['s']) AND !empty($_GET['s']))
     if($req -> rowCount() > 0){
         while($use = $req->fetch()){
             ?>
-            <p><?=$use['titre']; ?></p>
+            <p><?=$use['titre']; ?><p>
             <?php 
         }
     }else{ 
