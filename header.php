@@ -15,13 +15,13 @@
         <nav class="menu" role="navigation">
             <div class="inner">
                 <div class="m-left">
-                    <h1 class="logo"><img src="img_logo/vame5.png" alt=""></h1>
+                   <a href="prcp_annonce.php"><h1 class="logo"><img src="img_logo/vame6.png"></h1></a> 
                 </div>
                 <div class="m-right">
                 <a href="creer_annonce.php"class="m-link"><i class="fa fa-plus-square" aria-hidden="true"></i> Déposer une annonce</a>
                     <a href="messagerie.php"class="m-link"><i class="fa fa-comments" aria-hidden="true"></i> Messages</a>
                     <a href="profil.php"class="m-link"><i class="fa fa-heart" aria-hidden="true"></i> Mes favoris </a>
-                    <a href="connexionTemp.php"class="m-link"><i class="fa fa-user-o" aria-hidden="true"></i> Se connecter</a>
+                    <a href="connexionTemp.php"class="m-link"><i class="fa fa-user-o" aria-hidden="true"></i> Mon Profil</a>
                 </div>    
             </div>
         </nav>

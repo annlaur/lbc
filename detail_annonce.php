@@ -7,7 +7,6 @@ require_once("test.php");
 if(isset($_GET['ida']) && !empty($_GET['ida']))
 {
     $ida = (int) $_GET['ida'];
-    var_dump($ida);
     $annonce = getUneAnnonce($pdo, $ida);
 
 
@@ -32,16 +31,22 @@ $destinataire=$annonce['idu'];
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=S, initial-scale=1.0">
     <title><?= $annonce["titre"]?></title>
+    <link rel="stylesheet" href="bboot.css">
 </head>
 <body>
-    <h1><?=$annonce["titre"]?></h1><br>
 
-    <img src="<?= $image?>"><br>
-    <h4><?= $user["ville"]?></h4><h4><?= $region ?></h4><br>
-    <h4><?= $user["cp"]?></h4><br>
-    <p><?= $annonce["lib_a"]?></p>
+<div class="container text-center col-md-8 p-3 rounded-5"><br>
+    <div class="bg-light m-5 p-md-5 p-2 shadow rounded">
+        <h1><?=$annonce["titre"]?></h1><br>
 
-    <a href="messagerie.php?destinataire=<?=$destinataire?>&ida=<?=$ida?>">CONTACTER LE VENDEUR</a>
+        <img src="<?= $image?>"><br>
+        <h4><?= $user["ville"]?></h4><h4><?= $region ?></h4><br>
+        <h4><?= $user["cp"]?></h4><br>
+        <p><?= $annonce["lib_a"]?></p>
+
+        <a href="messagerie.php?destinataire=<?=$destinataire?>&ida=<?=$ida?>">CONTACTER LE VENDEUR</a>
+    </div>
+</div>
 
 
 </body>
