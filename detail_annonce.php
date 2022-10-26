@@ -1,8 +1,5 @@
 <?php
-require("session.php");
-require("fonction.php");
-require_once("header.php");
-require_once("test.php");
+require_once("page_include.php");
 
 if(isset($_GET['ida']) && !empty($_GET['ida']))
 {

@@ -8,6 +8,8 @@
     $ville = $user['ville'] ;
     $mail = $user['mail'];
     $cp = $user['cp'] ;
+    $noms = $user['nom'] ;
+
 
     
 
@@ -15,7 +17,7 @@
 <body>
     <div class="container">
     <form action="" method="post">
-        <input type="text" name="nom"  class="form-control" value="<?=$nom?>">
+        <input type="text" name="nom"  class="form-control" value="<?=$noms?>">
         <input type="mail" name="mail"  class="form-control" value="<?=$mail?>">
         <input type="text" name="ville"  class="form-control" value="<?=$ville?>">
         <input type="number" name="cp"  class="form-control" value="<?=$cp?>">
@@ -44,7 +46,7 @@ if(isset($_POST['boutton'])){
         $statement->execute();
         
         echo "Votre user a bien été modifiée";
-        //header("refresh: 2; url=creer_user.php");
+        header("location:profil.php");
 
 
 

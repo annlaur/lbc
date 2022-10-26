@@ -1,12 +1,13 @@
 <?php 
 require("session.php");
+//$pdo = new PDO('mysql:host=localhost:3307;dbname=lbc', 'root', '');
 require("fonction.php");
 require("test.php");
 require_once("header.php");
 //var_dump(LesplusVus($pdo, 6));
 ?>
 <body>
-<div class="row my-3"> partie filtrage, recherche et categorie, Jeanne/Louis</div>
+
 
 
 <div class="row p-3 my-5 text-center border" style="width: 1000px; margin-left: 250px;">

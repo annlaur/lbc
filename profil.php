@@ -1,4 +1,5 @@
 <?php 
+require("header.php");
 require("session.php");
 require("fonction.php");
 require("test.php");
@@ -6,14 +7,15 @@ $pdo->exec("SET NAMES utf8");
 $user = getUser($pdo, $idu);
 $ville = $user['ville'] ;
 $cp = $user['cp'] ;
+$noms = $user['nom'] ;
 ?>
-<h1>Bonjour <?= $nom ?></h1>
+<h1>Bonjour <?= $noms ?></h1>
 <body>
     <div class="row">
 
        <div class="col">
             <h2>Profil</h2>
-            Nom : <?= $nom?><br>
+            Nom : <?= $noms?><br>
             Ville : <?= $ville?><br>
             Code postal : <?= $cp?><br>
             mail : <?= $mail?><br>
