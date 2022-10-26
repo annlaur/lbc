@@ -1,8 +1,21 @@
-<html>
-<body>
 <?php 
 require_once("page_include.php");
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion/creation</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="bboot.css">
+</head>
+<body style = "background-color: rgb(251, 246, 208);">
+
+<div class="container text-center col-md-6 p-3 rounded-5"><br>
+<div class="bg-light m-5 p-md-5 p-2 shadow rounded">
+<h1>Choisir la catégorie de l'annonce</h1><br>
 <form class="text-center" action="" method="post">
     <select class="form-select my-3" style="width: 200px;" placeholder="Categorie" name="idc" required>
                         <?php
@@ -17,6 +30,8 @@ require_once("page_include.php");
     </select>
     <input class="btn btn-dark rounded-3 my-3" type="submit" value="choisir" name="sub">
 </form>
+</div>
+</div>
 <?php
 if(isset($_POST['sub']))
 {
