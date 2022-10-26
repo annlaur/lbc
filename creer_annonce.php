@@ -46,7 +46,7 @@
 			<p>Catégorie: </p>
 			<select class="form-select my-3" placeholder="Categorie" name="idc" required>
                 	<?php
-                    	$req3 = "SELECT DISTINCT nom_cat FROM categorie"; 
+                    	$req3 = "SELECT * FROM categorie"; 
                     	// $resultat3= mysqli_query($id,$req3);
 						foreach($pdo->query($req3,PDO::FETCH_ASSOC)as $ligne)
                    		// while($ligne=mysqli_fetch_assoc($resultat3))
