@@ -4,6 +4,7 @@ require("session.php");
 require("fonction.php");
 require("test.php");
 require_once("header.php");
+
 //var_dump(LesplusVus($pdo, 6));
 ?>
 <!DOCTYPE html>
@@ -79,7 +80,7 @@ require_once("header.php");
                 </div>
                 <div class="col-md-8">
                     <div class="card-body px-0">
-                        <h5 class="card-title"><?= $annonce['titre']?></h5>
+                        <h2 class="card-title"><?= $annonce['titre']?></h2>
                         <p class="card-text"><small class="text-muted"><?= $sousTitre?></small></p>
                         <p class="card-text text-success"><strong><?= $annonce['prix'] ?> €</strong></p>
                         <p class="card-text"><?= $description ?> ....</p>
@@ -110,7 +111,7 @@ require_once("header.php");
 
 
 
-
+<?php require_once("footer.php");?>
     <!-- Les scripts de fins sont a mettre dans le fichier footer a require
      sur toute les pages -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
