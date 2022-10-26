@@ -1,4 +1,4 @@
-<!--  JEANNE -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,8 +19,8 @@
                 </div>
                 <div class="m-right">
                 <a href="creer_annonce.php"class="m-link"><i class="fa fa-plus-square" aria-hidden="true"></i> Déposer une annonce</a>
-                    <a href="messagerie.php"class="m-link"><i class="fa fa-comments" aria-hidden="true"></i> Messages</a>
-                    <a href="profil.php"class="m-link"><i class="fa fa-heart" aria-hidden="true"></i> Mes favoris </a>
+                    <a href="profil.php"class="m-link"><i class="fa fa-comments" aria-hidden="true"></i> Mes annonces</a>
+                    <a href="deconnexion.php"class="m-link"><i class="bi bi-door-closed" aria-hidden="true"></i> Déconnexion </a>
                     <a href="connexionTemp.php"class="m-link"><i class="fa fa-user-o" aria-hidden="true"></i> Mon Profil</a>
                 </div>    
             </div>

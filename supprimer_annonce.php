@@ -10,6 +10,6 @@
     $statement = $pdo->prepare($req);
     $statement->execute();
     echo "<span class='text-center'>votre annonce a bien été supprimée</span>";
-    header("refresh:2;url=gerer_annonce.php");
+    header("refresh:2;url=profil.php");
     
 ?>

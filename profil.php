@@ -3,6 +3,9 @@ require("session.php");
 require("fonction.php");
 require("test.php");
 $pdo->exec("SET NAMES utf8");
+$user = getUser($pdo, $idu);
+$ville = $user['ville'] ;
+$cp = $user['cp'] ;
 ?>
 <h1>Bonjour <?= $nom ?></h1>
 <body>
@@ -11,8 +14,8 @@ $pdo->exec("SET NAMES utf8");
        <div class="col">
             <h2>Profil</h2>
             Nom : <?= $nom?><br>
-            Ville : <br>
-            Code postal : <br>
+            Ville : <?= $ville?><br>
+            Code postal : <?= $cp?><br>
             mail : <?= $mail?><br>
             <a href="modifier_user.php">Modifier mes informations</a>
 
@@ -20,26 +23,9 @@ $pdo->exec("SET NAMES utf8");
         
         <div class="col">
             <h2>Vos annonces :</h2>
-            <!-- <?php 
-                $vosAnnonces = getMesAnnonces($pdo, $idu);
-                foreach($vosAnnonces as $annonces){ 
-                    $image = getUneImage($pdo, $annonces['ida'],$annonces['img']);
+            <?php 
+            require("gerer_annonce.php");
             ?>
-
-            <div class="card border-light" style="max-width:200px">
-                <img class="card-img-top" src=<?= $image ?> alt="Card image" style="width:100%">
-                <div class="card-body">
-                    <h4 class="card-title"><?= $annonces['prix'] ?> €</h4>
-                    <p class="card-text"><?= $annonces['cpt_vu'] ?> Vues</p>
-                    <p class="card-text"><?= $annonces['cpt_like'] ?> favoris</p>
-                </div>
-            </div>
-            <br>
-            <?php } ?>
-
-            <a href="gerer_annonce.php">Gérer mes annonces</a> -->
-            <?php require("gerer_annonce.php");
-                    ?>
         </div>
                     
 

@@ -3,12 +3,13 @@ require("session.php");
 require("fonction.php");
 require("test.php");
 require_once("header.php");
+//var_dump(LesplusVus($pdo, 6));
 ?>
 <body>
 <div class="row my-3"> partie filtrage, recherche et categorie, Jeanne/Louis</div>
 
 
-<div class="row p-3 my-5 mx-5 text-center border" style="width: 1000px;">
+<div class="row p-3 my-5 text-center border" style="width: 1000px; margin-left: 250px;">
 
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" >
     <div class="carousel-inner">
@@ -30,7 +31,8 @@ require_once("header.php");
         <?php for($i=0;$i<2;$i++){ ?>
             <div class="carousel-item">
             <div class="row">
-                    <?php for($i=0;$i<3;$i++){ ?>
+                    <?php for($i=0;$i<3;$i++){?>
+                        
                         <div class = "col-md-4 mb-3">
                             <div class="card" style="width: 10rem;">
                                 <img src="img_annonce/defaut.jpg" class="img-fluid card-img-top" alt="...">
@@ -39,7 +41,7 @@ require_once("header.php");
                                 </div>
                             </div>
                         </div>
-                    <?php } ?>
+                    <?php  } ?>
                 </div>
             
             </div>
@@ -71,7 +73,7 @@ require_once("header.php");
         $description = substr($annonce['lib_a'], 0, 100);
         
 ?>
-        <div class="card container mb-3" style="width: 1100px;" >
+        <div class="card container mb-3" style="width: 1100px; border-width: 5px; border-color: black; background-color: #f1ebdf;" >
             <div class="row">
                 <div class="col-md-4 px-0">
                     <img src='<?= $image ?>' style="height: 250px; width: 250px;" class="img-fluid rounded-start" alt="...">
@@ -103,7 +105,7 @@ require_once("header.php");
 
 <div class="sticky-bottom  float-end">
     <a href="creer_annonce.php" target="_blank" rel="noopener noreferrer">
-        <img src="img_site/plus-circle.svg" alt="PLUS"> <p>CREER UNE ANNONCE</p>
+        <img src="img_site/plus-circle.svg" alt="PLUS">
     </a>
 </div>
 

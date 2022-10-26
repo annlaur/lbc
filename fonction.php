@@ -162,4 +162,13 @@ function favoris(PDO $pdo, int $ida, $idu) : string {
 
     }
 }
+
+function LesplusVus (PDO $pdo, int $nb){
+    
+    foreach($pdo->query("select * from annonce order by cpt_vu DESC limit $nb", PDO::FETCH_NUM) as $tab){
+        $plusVus[] = $tab;
+    }
+    return $plusVus;
+}
+
 ?>
