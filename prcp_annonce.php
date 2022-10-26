@@ -16,7 +16,7 @@ require_once("header.php");
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="bboot.css">
 </head>
-<body>
+<body style = "background-color: rgb(251, 246, 208);">
 
 
 

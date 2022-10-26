@@ -20,7 +20,9 @@ require("test.php");
 <div class="row">
     
         <div class="container text-center col-4  p-3 rounded-5">
+        <a href="Aindex.php">
             <img class="text-center" src="img_logo/vame5.png">
+        </a>
         </div>
       
         <!-- <div class="container border border-secondary border-opacity-10 text-center col-4 mt-5 p-3 rounded-5">

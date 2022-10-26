@@ -41,7 +41,9 @@ if(isset($_POST['valid']))
 <body>
     <div class="row">
     <div class="container text-center col-4  p-3 rounded-5">
+        <a href="Aindex.php">
             <img class="text-center" src="img_logo/vame5.png">
+        </a>
         </div>
     </div>
     <div class="row">
