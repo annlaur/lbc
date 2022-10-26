@@ -92,7 +92,6 @@
 
 <?php } ?>
 </table>
-<a href="profil.php">retour</a>
 </div>
 
 </body>
