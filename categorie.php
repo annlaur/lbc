@@ -1,69 +1,36 @@
+<html>
+<body>
 <?php 
-require("session.php");
-//$pdo = new PDO('mysql:host=localhost:3307;dbname=lbc', 'root', '');
-require("fonction.php");
-require("test.php");
-require_once("header.php");
-//var_dump(LesplusVus($pdo, 6));
+require_once("page_include.php");
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connexion/creation</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="bboot.css">
-</head>
-<body style = "background-color: rgb(251, 246, 208);">
-
-
-
-<div class="row p-3 my-5 text-center border" style="width: 1000px; margin-left: 250px;">
-
-    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" >
-    <div class="carousel-inner">
- <!-- dans le carousel on affiche les 9 annonces les plus vu  -->
-        <div class="carousel-item active"> <!-- SLIDE 1 -->
-            <div class="row">
-                <?php 
-                    $plusVus = LesplusVus($pdo, 3);
-                    foreach($plusVus as $tab){
-                        $image = getUneImage($pdo, $tab['ida'],$tab['img']);
-                         ?>
-                    <div class = "col-md-4 mb-3">
-                         <div class="card" style="width: 10rem;">
-                            <a href="detail_annonce.php?ida=<?=$tab['ida']?>">
-                            <img src="<?= $image ?>" class="img-fluid card-img-top" alt="...">
-                            </a>
-                            <div class="card-body">
-                                <p class="card-text"><?= $tab['cpt_vu'] ?> vues</p>
-                            </div>
-                        </div>
-                    </div>
-                <?php } ?>
-            </div>
-        </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-    </button>
-    </div>
-
-</div>
-<a href="categorie.php">choisir par catégorie</a>
-
-
-
+<form class="text-center" action="" method="post">
+    <select class="form-select my-3" style="width: 200px;" placeholder="Categorie" name="idc" required>
+                        <?php
+                            $req3 = "SELECT * FROM categorie"; 
+                            
+                            foreach($pdo->query($req3,PDO::FETCH_ASSOC)as $ligne)
+                            
+                            {
+                                echo "<option value =".$ligne['idc']."> ".$ligne["nom_cat"]." </option>";
+                            }
+                        ?><br>
+    </select>
+    <input class="btn btn-dark rounded-3 my-3" type="submit" value="choisir" name="sub">
+</form>
 <?php
-    $allAnnonces = getAllAnnonces($pdo);
-    foreach($allAnnonces as $annonce){
+if(isset($_POST['sub']))
+{
+    $nbCat = $_POST["idc"];
+    $allAnnonces = array();
+    $query = "select annonce.*, user.ville, user.cp, user.nom, categorie.nom_cat FROM annonce, user, categorie WHERE annonce.idu = user.idu and annonce.idc = categorie.idc and annonce.idc = '$nbCat'";
+    foreach($pdo->query($query, PDO::FETCH_ASSOC) as $annonce ){
+        $allAnnonces[] = $annonce;
+    }
+
+
+
+
+foreach($allAnnonces as $annonce){
         $ida = $annonce['ida'];
         $fav = favoris($pdo, $ida, $idu);
         $image = getUneImage($pdo, $annonce['ida'],$annonce['img']);
@@ -98,7 +65,7 @@ require_once("header.php");
             
         </div>
 
-    <?php } ?>
+    <?php } }?>
 
 
 
