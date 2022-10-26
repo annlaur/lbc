@@ -53,7 +53,7 @@ if(isset($_POST['valid']))
 
         <input class="form-control my-3" type="text" placeholder="Prénom" name="prenom" required><br><br>
         <input class="form-control my-3" type="email" placeholder="Adresse Mail" name="mail" required><br><br>
-        <input class="form-control my-3" type="password" placeholder="Mot de passe" name="mdp" min=10 required><br><br>
+        <input class="form-control my-3" type="password" placeholder="Mot de passe" name="mdp" minlength=10 required><br><br>
         <select class="form-select my-3" placeholder="Choisir la region" name="idr" required>
                 	<?php
                     	$req2 = "select * from region"; 
