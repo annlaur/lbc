@@ -19,13 +19,13 @@
     <div class="container text-center col-md-6 p-3 rounded-5"><br>
     	<div class="bg-light m-5 p-md-5 p-2 shadow rounded">
     	<form action="" method="post">
-        	<p>Titre:</p>
+        	<p class=" fw-bold" style="color:black;">Titre:</p>
 			<input class="form-control my-3" type="text" name="titre" placeholder="Titre de l'annonce" required><br>
-			<p>Prix:</p>
+			<p class=" fw-bold" style="color:black;">Prix:</p>
 			<input class="form-control my-3" type="text" name="prix" placeholder="Prix" min=0 required>€<br>
-        	<p>Code Postal:</p>
+        	<p class=" fw-bold" style="color:black;">Code Postal:</p>
 			<input class="form-control my-3" type="text" name="cp" placeholder="Code Postal" size="6" maxlength="5" required><br>
-        	<p>Régions:</p>
+        	<p class=" fw-bold" style="color:black;">Régions:</p>
 			<select class="form-select my-3" placeholder="Choisir la region" name="region">
                 	<?php
                     	$req2 = "SELECT DISTINCT nomRegion FROM region"; 
@@ -38,9 +38,9 @@
                 	?>
         		</select><br><br>
         
-			<p>Ville:</p>
+			<p class=" fw-bold" style="color:black;">Ville:</p>
 			<input class="form-control my-3" type="text" name="ville" placeholder="Ville" required>
-			<p>Catégorie: </p>
+			<p class=" fw-bold" style="color:black;">Catégorie: </p>
 			<select class="form-select my-3" placeholder="Categorie" name="idc" required>
                 	<?php
                     	$req3 = "SELECT * FROM categorie"; 
@@ -51,10 +51,11 @@
                         	echo "<option value =".$ligne['idc']."> ".$ligne["nom_cat"]." </option>";
                     	}
                 	?><br>
-        	<p class="">Description:</p>
+			</select>
+        	<p class=" fw-bold" style="color:black;">Description:</p>
 			<textarea class="form-control my-3" name="descrip" placeholder="Description de l'annonce" cols="30" rows="10" required></textarea><br>
         	<!-- Voulez-vous télécharger des images:<input type="radio" name="question" value="1" required><input type="radio" name="question" value="0" required> -->
-			<p>Télécharger des images:</p><input class="" type="file" name="img1">
+			<p class=" fw-bold" style="color:black;">Télécharger des images:</p><input class="" type="file" name="img1">
 			<input class="form-control my-3" type="submit" name="submit" value="Créer l'annonce" required>	
     </form>
 </div>

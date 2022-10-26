@@ -2,6 +2,7 @@
     require("session.php");
     require("fonction.php");
     require("test.php");
+    require_once("header.php");
 
     
 
