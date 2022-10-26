@@ -55,7 +55,7 @@ require("test.php");
         
             </form>
             <div class="text-center m-5">
-            <a class="textalign-center" style="color:black" href="inscription.php">Inscrivez-vous</a>
+            <p>Vous n'êtes pas inscrit? </p><a class="textalign-center" style="color:black" href="inscription.php">Inscrivez-vous</a>
             </div>
         </div>
     </div>

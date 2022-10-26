@@ -91,7 +91,7 @@ require_once("header.php");
                 </div>
                 <div class="col-md-8">
                     <div class="card-body px-0">
-                        <h5 class="card-title"><?= $annonce['titre']?></h5>
+                        <h2 class="card-title"><?= $annonce['titre']?></h2>
                         <p class="card-text"><small class="text-muted"><?= $sousTitre?></small></p>
                         <p class="card-text text-success"><strong><?= $annonce['prix'] ?> €</strong></p>
                         <p class="card-text"><?= $description ?> ....</p>
