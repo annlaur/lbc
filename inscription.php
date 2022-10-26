@@ -41,9 +41,7 @@ if(isset($_POST['valid']))
 <body>
     <div class="row">
     <div class="container text-center col-4  p-3 rounded-5">
-        <a href="Aindex.php">
             <img class="text-center" src="img_logo/vame5.png">
-        </a>
         </div>
     </div>
     <div class="row">
@@ -55,7 +53,7 @@ if(isset($_POST['valid']))
 
         <input class="form-control my-3" type="text" placeholder="Prénom" name="prenom" required><br><br>
         <input class="form-control my-3" type="email" placeholder="Adresse Mail" name="mail" required><br><br>
-        <input class="form-control my-3" type="password" placeholder="Mot de passe" name="mdp" minlength=10 required><br><br>
+        <input class="form-control my-3" type="password" placeholder="Mot de passe" name="mdp" min=10 required><br><br>
         <select class="form-select my-3" placeholder="Choisir la region" name="idr" required>
                 	<?php
                     	$req2 = "select * from region"; 
@@ -69,7 +67,7 @@ if(isset($_POST['valid']))
         		</select><br><br>
         <input class="form-control my-3" type="text" placeholder="Ville" name="ville" required><br><br>
         <input class="form-control my-3" type="text" placeholder="Code Postal" name="cp" required><br><br>
-        <!-- <input type="file" placeholder="Avatar" name="avatar"><br><br> -->
+        
 
         <div class="text-center m-5">
         <input type="submit" value="S'INSCRIRE" name="valid" class="btn btn-dark mb-3 rounded-3">
