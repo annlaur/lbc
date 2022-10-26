@@ -1,31 +1,44 @@
 <?php 
 require("session.php");
 require("fonction.php");
+require_once("header.php");
 require("test.php");
 $pdo->exec("SET NAMES utf8");
 $user = getUser($pdo, $idu);
 $ville = $user['ville'] ;
 $cp = $user['cp'] ;
 ?>
-<h1>Bonjour <?= $nom ?></h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bboot.css">
+    <title>Inscription</title>
+</head>
+<h1 class="text-center">Bonjour <?= $nom ?>!</h1><br><br>
 <body>
     <div class="row">
 
        <div class="col">
-            <h2>Profil</h2>
-            Nom : <?= $nom?><br>
-            Ville : <?= $ville?><br>
-            Code postal : <?= $cp?><br>
-            mail : <?= $mail?><br>
-            <a href="modifier_user.php">Modifier mes informations</a>
-
+       <div class="bg-light m-5 p-md-5 p-2 shadow rounded">
+            <h2 class="text-center">Profil</h2><br>
+            <p class=" fw-bold" style="color:black;" >Nom :</p><?= $nom?><br><br>
+            <p class=" fw-bold" style="color:black;" >Ville :</p><?= $ville?><br><br>
+            <p class=" fw-bold" style="color:black;" >Code postal :</p><?= $cp?><br><br>
+            <p class=" fw-bold" style="color:black;" >Mail :</p><?= $mail?><br><br>
+            <a style="color:black" href="modifier_user.php"><p class="text-center">Modifier mes informations</p></a>
+        </div>
        </div>
         
         <div class="col">
+        <div class="bg-light m-5 p-md-5 p-2 shadow rounded">
             <h2>Vos annonces :</h2>
             <?php 
             require("gerer_annonce.php");
             ?>
+        </div>
         </div>
                     
 
@@ -33,6 +46,7 @@ $cp = $user['cp'] ;
     <div class="row">
 
         <div class="col">
+        <div class="bg-light m-5 p-md-5 p-2 shadow rounded">
             <h2>Messagerie</h2>
             <?php
             
@@ -59,15 +73,11 @@ $cp = $user['cp'] ;
 
     ?>
                     
-         
-
-
-
-
-            
+        </div>   
         </div>
 
         <div class="col">
+            <div class="bg-light m-5 p-md-5 p-2 shadow rounded">
             <h2>Vos favoris</h2>
             <?php
                
@@ -93,8 +103,10 @@ $cp = $user['cp'] ;
                     </div>
                 </div>
             <?php } ?>
+               </div>
         </div>
 
     </div>
 </body>
 
+</html>
