@@ -4,6 +4,7 @@ require("session.php");
 require("fonction.php");
 require("test.php");
 require_once("header.php");
+require("filtre1.php");
 //var_dump(LesplusVus($pdo, 6));
 ?>
 <!DOCTYPE html>
