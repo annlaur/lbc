@@ -82,5 +82,6 @@ if(isset($_GET['destinataire']) && !empty($_GET['destinataire']))
     </section>
     </div>
     </div>
+    <?php require_once("footer.php");?>
 </body>
 </html>

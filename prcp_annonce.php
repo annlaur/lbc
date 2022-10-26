@@ -123,7 +123,7 @@ require_once("header.php");
 
 
 
-
+<?php require_once("footer.php");?>
     <!-- Les scripts de fins sont a mettre dans le fichier footer a require
      sur toute les pages -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>

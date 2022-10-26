@@ -82,6 +82,6 @@ if(isset($_POST['valid']))
 
 
 
-    
+    <?php require_once("footer.php");?>
 </body>
 </html>

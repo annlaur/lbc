@@ -34,8 +34,6 @@
     </form>
     </div>
     </div>
-
-</body>
 <?php
 if(isset($_POST['boutton'])){
     $req="update annonce 
@@ -60,4 +58,7 @@ if(isset($_POST['boutton'])){
 
 }
 ?>
+<?php require_once("footer.php");?>
+</body>
+
 </html>

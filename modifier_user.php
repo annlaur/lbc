@@ -37,8 +37,6 @@
     </form>
     </div>
 </div>
-
-</body>
 <?php
 if(isset($_POST['boutton'])){
     $req="update user 
@@ -65,4 +63,7 @@ if(isset($_POST['boutton'])){
 
 }
 ?>
+
+</body>
+<?php require_once("footer.php");?>
 </html>

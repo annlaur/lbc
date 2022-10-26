@@ -1,5 +1,6 @@
 <?php
 	require_once("page_include.php");
+	
 
 ?>
 
@@ -61,8 +62,9 @@
     </form>
 </div>
 </div>
-
-
+<?php
+require_once("footer.php");
+?>
 </body>
 </html>
 
@@ -125,5 +127,5 @@ if(isset($_POST['submit']))
 		//header("location:detail_annonce.php");
 			
 	}
-
+	require_once("footer.php");
 ?>
