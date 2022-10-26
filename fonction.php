@@ -153,10 +153,10 @@ function favoris(PDO $pdo, int $ida, $idu) : string {
 
         if($nbFav == 0){ //si le favoris n'existe pas deja on rempli l'étoile
             
-            return 'img_site/star-bold.svg';
+            return 'img_site/sparkle-bold.svg';
 
         }else{ //si il existe deja on vide l'étoile
-            return 'img_site/star-fill.svg';
+            return 'img_site/sparkle-fill.svg';
         }
 
 

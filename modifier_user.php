@@ -2,12 +2,15 @@
     require("session.php");
     require("fonction.php");
     require("test.php");
+    require_once("header.php");
 
     
     $user = getUser($pdo, $idu);
     $ville = $user['ville'] ;
     $mail = $user['mail'];
     $cp = $user['cp'] ;
+    $noms = $user['nom'] ;
+
 
     
 
@@ -56,7 +59,7 @@ if(isset($_POST['boutton'])){
         $statement->execute();
         
         echo "Votre user a bien été modifiée";
-        //header("refresh: 2; url=creer_user.php");
+        header("location:profil.php");
 
 
 

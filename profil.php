@@ -1,4 +1,5 @@
 <?php 
+require("header.php");
 require("session.php");
 require("fonction.php");
 require_once("header.php");
@@ -7,6 +8,7 @@ $pdo->exec("SET NAMES utf8");
 $user = getUser($pdo, $idu);
 $ville = $user['ville'] ;
 $cp = $user['cp'] ;
+$noms = $user['nom'] ;
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -1,5 +1,6 @@
 <?php 
 require("session.php");
+//$pdo = new PDO('mysql:host=localhost:3307;dbname=lbc', 'root', '');
 require("fonction.php");
 require("test.php");
 require_once("header.php");
