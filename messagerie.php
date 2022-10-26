@@ -33,12 +33,25 @@ if(isset($_GET['destinataire']) && !empty($_GET['destinataire']))
 
 
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bboot.css">
+    <title>Messagerie</title>
+</head>
 <body>
+    
+    <div class="container text-center col-md-6 p-3 rounded-5"><br>
+    <div class="bg-light m-5 p-md-5 p-2 shadow rounded">
+    <h1>Envoyer un message au vendeur</h1><br>
     <form action="" method="POST">
 
-        <textarea name="message" id="" cols="30" rows="10"></textarea>
+        <textarea class="form-control" name="message" id="" cols="30" rows="10"></textarea>
         <br><br>
-        <input type="submit" name="envoyer">
+        <input class="btn btn-dark rounded-3" type="submit" name="envoyer">
     </form>
 
     <section id="messages">
@@ -67,6 +80,7 @@ if(isset($_GET['destinataire']) && !empty($_GET['destinataire']))
 
 
     </section>
-    
+    </div>
+    </div>
 </body>
 </html>

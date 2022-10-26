@@ -2,6 +2,7 @@
     require("session.php");
     require("fonction.php");
     require("test.php");
+    require_once("header.php");
 
     
 
@@ -12,14 +13,26 @@
     $prix = $annonce['prix'];
 
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bboot.css">
+    <title>Inscription</title>
 <body>
-    <div class="container">
+    <div class="container text-center col-md-6 p-3 rounded-5"><br>
+    <div class="bg-light m-5 p-md-5 p-2 shadow rounded">
     <form action="" method="post">
-        <input type="text" name="titre"  class="form-control" value="<?=$titre?>">
-        <input type="text" name="description"  class="form-control" value="<?=$description?>">
-        <input type="number" name="prix"  class="form-control" value="<?=$prix?>">
-        <input type="submit" name="boutton" value="Modifier">
+        <h1>Modifier l'annonce</h1><br><br>
+        <input class="form-control my-3"  type="text" name="titre"  class="form-control" value="<?=$titre?>">
+        <input class="form-control my-3" type="text" name="description"  class="form-control" value="<?=$description?>">
+        <input class="form-control my-3" type="number" name="prix"  class="form-control" value="<?=$prix?>"><br>
+        <input class="btn btn-dark rounded-3 my-3" type="submit" name="boutton" value="Modifier">
     </form>
+    </div>
     </div>
 
 </body>
@@ -47,3 +60,4 @@ if(isset($_POST['boutton'])){
 
 }
 ?>
+</html>

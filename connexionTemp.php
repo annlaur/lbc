@@ -1,7 +1,7 @@
 <?php
 require("test.php");
-    //$pdo = new PDO('mysql:host=localhost;dbname=lbc', 'root', '');
-    $pdo = new PDO('mysql:host=localhost:3307;dbname=lbc','root', '');
+    $pdo = new PDO('mysql:host=localhost;dbname=lbc', 'root', '');
+    // $pdo = new PDO('mysql:host=localhost:3307;dbname=lbc','root', '');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -78,7 +78,7 @@ require("test.php");
                 $_SESSION["nom"]=$li["nom"];
                 $_SESSION["idu"]=$li["idu"];
                 //entrer sur page d'acceuil
-                 header("location:prcp_annonce.php");
+                 header("location:profil.php");
             }else{
                 echo "erreur mot de passe ou mail";
             }
