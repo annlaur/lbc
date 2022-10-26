@@ -77,7 +77,7 @@ if(isset($_POST['submit']))
 		$statement->bindValue(':idu',$idu, PDO::PARAM_INT);
 		$statement->bindValue(':idc',$idc, PDO::PARAM_INT);
 		$statement->bindValue(':titre',$titre, PDO::PARAM_STR);
-		$statement->bindValue(':lib_a',$descrip, PDO::PARAM_STR);
+		$statement->bindValue(':lib_a',$lib_a, PDO::PARAM_STR);
 		$statement->bindValue(':prix', $prix);
 
 
